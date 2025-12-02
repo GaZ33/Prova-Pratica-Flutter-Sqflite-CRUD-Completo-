@@ -1,16 +1,18 @@
-# prova
+Mini Cadastro de Tarefas
 
-A new Flutter project.
+Descrição
+---------
+Aplicativo simples em Flutter que utiliza SQLite para gerenciar tarefas com operações de criar, ler, editar e excluir.
 
-## Getting Started
+Dados do aluno
+--------------
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+Campo personalizado que ele recebeu
+---------------------------------
+O app possui um campo livre chamado `campoExtra` que deve ser preenchido conforme a exigência da tarefa.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Dificuldade encontrada
+----------------------
+- Conexão/criação do banco de dados.
+- Inserção no banco de dados.
