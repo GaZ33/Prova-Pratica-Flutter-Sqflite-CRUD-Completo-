@@ -39,30 +39,18 @@ class DatabaseHelper {
             descricao TEXT,
             prioridade INTEGER NOT NULL,
             criadoEm TEXT NOT NULL,
-            campoExtra TEXT,
-            ra TEXT,
-            tema TEXT,
-            corPrimaria TEXT,
-            corSecundaria TEXT
+            prefixoEmpresa TEXT
           )
         ''');
       },
       onOpen: (db) async {
-        // Ensure any missing columns are added when opening an existing DB
+        // Ensure 'prefixoEmpresa' column exists when opening an existing DB
         final cols = await db.rawQuery("PRAGMA table_info(tarefas);");
         final existing = cols.map((c) => c['name'] as String).toSet();
-        final toAdd = <String, String>{
-          'ra': 'TEXT',
-          'tema': 'TEXT',
-          'corPrimaria': 'TEXT',
-          'corSecundaria': 'TEXT',
-        };
-        for (final entry in toAdd.entries) {
-          if (!existing.contains(entry.key)) {
-            await db.execute(
-              'ALTER TABLE tarefas ADD COLUMN ${entry.key} ${entry.value};',
-            );
-          }
+        if (!existing.contains('prefixoEmpresa')) {
+          await db.execute(
+            'ALTER TABLE tarefas ADD COLUMN prefixoEmpresa TEXT;',
+          );
         }
       },
     );

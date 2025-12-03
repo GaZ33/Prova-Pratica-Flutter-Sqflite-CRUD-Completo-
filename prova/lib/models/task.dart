@@ -4,11 +4,7 @@ class Task {
   String? descricao;
   int prioridade; // 1-baixa,2-media,3-alta
   DateTime criadoEm;
-  String? campoExtra;
-  String? ra;
-  String? tema;
-  String? corPrimaria; // hex string, ex: #FF0000
-  String? corSecundaria;
+  String? prefixoEmpresa;
 
   Task({
     this.id,
@@ -16,11 +12,7 @@ class Task {
     this.descricao,
     required this.prioridade,
     DateTime? criadoEm,
-    this.campoExtra,
-    this.ra,
-    this.tema,
-    this.corPrimaria,
-    this.corSecundaria,
+    this.prefixoEmpresa,
   }) : criadoEm = criadoEm ?? DateTime.now();
 
   Map<String, dynamic> toMap() {
@@ -29,11 +21,7 @@ class Task {
       'descricao': descricao,
       'prioridade': prioridade,
       'criadoEm': criadoEm.toIso8601String(),
-      'campoExtra': campoExtra,
-      'ra': ra,
-      'tema': tema,
-      'corPrimaria': corPrimaria,
-      'corSecundaria': corSecundaria,
+      'prefixoEmpresa': prefixoEmpresa,
     };
     if (id != null) map['id'] = id;
     return map;
@@ -46,11 +34,7 @@ class Task {
       descricao: map['descricao'] as String?,
       prioridade: map['prioridade'] as int,
       criadoEm: DateTime.parse(map['criadoEm'] as String),
-      campoExtra: map['campoExtra'] as String?,
-      ra: map['ra'] as String?,
-      tema: map['tema'] as String?,
-      corPrimaria: map['corPrimaria'] as String?,
-      corSecundaria: map['corSecundaria'] as String?,
+      prefixoEmpresa: map['prefixoEmpresa'] as String?,
     );
   }
 
@@ -64,6 +48,6 @@ class Task {
 
   @override
   String toString() {
-    return 'Task{id: $id, titulo: $titulo, prioridade: $prioridade, criadoEm: $criadoEm, campoExtra: $campoExtra}';
+    return 'Task{id: $id, titulo: $titulo, prioridade: $prioridade, criadoEm: $criadoEm, prefixoEmpresa: $prefixoEmpresa}';
   }
 }

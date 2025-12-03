@@ -51,11 +51,7 @@ class _TaskListState extends State<TaskList> {
               descricao: deleted.descricao,
               prioridade: deleted.prioridade,
               criadoEm: deleted.criadoEm,
-              campoExtra: deleted.campoExtra,
-              ra: deleted.ra,
-              tema: deleted.tema,
-              corPrimaria: deleted.corPrimaria,
-              corSecundaria: deleted.corSecundaria,
+              prefixoEmpresa: deleted.prefixoEmpresa,
             );
             await DatabaseHelper.insertTask(restored);
             await _loadTasks();
@@ -74,18 +70,6 @@ class _TaskListState extends State<TaskList> {
         return Colors.orange.shade400;
       default:
         return Colors.green.shade400;
-    }
-  }
-
-  Color _parseColor(String hex) {
-    try {
-      var h = hex.trim();
-      if (h.startsWith('#')) h = h.substring(1);
-      if (h.length == 6) h = 'FF$h';
-      final val = int.parse(h, radix: 16);
-      return Color(val);
-    } catch (_) {
-      return Colors.transparent;
     }
   }
 
@@ -173,29 +157,9 @@ class _TaskListState extends State<TaskList> {
                         children: [
                           if ((t.descricao ?? '').isNotEmpty)
                             Text(t.descricao!),
-                          if ((t.campoExtra ?? '').isNotEmpty)
-                            Text('Extra: ${t.campoExtra}'),
-                          if ((t.tema ?? '').isNotEmpty)
-                            Text('Tema: ${t.tema}'),
-                          if ((t.ra ?? '').isNotEmpty) Text('RA: ${t.ra}'),
+                          if ((t.prefixoEmpresa ?? '').isNotEmpty)
+                            Text('Prefixo: ${t.prefixoEmpresa}'),
                           const SizedBox(height: 6),
-                          Row(
-                            children: [
-                              if ((t.corPrimaria ?? '').isNotEmpty)
-                                Container(
-                                  width: 18,
-                                  height: 18,
-                                  color: _parseColor(t.corPrimaria!),
-                                  margin: const EdgeInsets.only(right: 8),
-                                ),
-                              if ((t.corSecundaria ?? '').isNotEmpty)
-                                Container(
-                                  width: 18,
-                                  height: 18,
-                                  color: _parseColor(t.corSecundaria!),
-                                ),
-                            ],
-                          ),
                         ],
                       ),
                       trailing: Row(

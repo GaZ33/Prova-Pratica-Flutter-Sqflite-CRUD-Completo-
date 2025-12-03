@@ -9,9 +9,6 @@ Dados do aluno
 Fernando Henrique Zatarin RA 202310097
 Gabriel Alexandre Pinto RA 202310157
 
-Campo personalizado que ele recebeu
----------------------------------
-O app possui um campo livre chamado `campoExtra` que deve ser preenchido conforme a exigência da tarefa.
 
 Dificuldade encontrada
 ----------------------
